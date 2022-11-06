@@ -1,6 +1,6 @@
 import { LOGIN_USER, LOGOUT_USER } from "../action-types/authActionType";
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   userName: "",
   imageURL: "",
   userEmail: "",
