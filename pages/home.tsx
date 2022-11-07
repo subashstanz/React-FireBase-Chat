@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import {
   VictoryArea,
   VictoryAxis,
@@ -11,10 +12,11 @@ import {
 } from "victory";
 import SideBar from "../components/sideBar";
 import { useAuthData } from "../redux/selector/authSelector";
+import { RootState } from "../redux/store";
 
 const Home = () => {
-  const data = useAuthData();
-  console.log("data", data);
+  const count = useSelector((state: RootState) => state)
+  console.log("data", count);
   return (
     <div className="flex  w-screen h-screen bg-gray-300"><SideBar /></div>
   );

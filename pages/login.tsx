@@ -7,8 +7,10 @@ import "firebase/compat/firestore";
 import useAuthState from "../hooks/useAuth";
 import { profile } from "console";
 import { AUTH_ACTIONS } from "../redux/action/authAction";
-import { useDispatch } from "react-redux";
-import Router from 'next/router';
+import { useDispatch, useSelector } from "react-redux";
+import Router from "next/router";
+import { updateUser } from "../redux/userSlice";
+import { RootState } from "../redux/store";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDs2f4jyUotZq9ETU1wCRl_XMNhnnpkpkA",
@@ -23,6 +25,7 @@ firebase.initializeApp(firebaseConfig);
 const LoginPage = () => {
   const { user, initializing } = useAuthState(firebase.auth());
   console.log({ user, initializing });
+  
   const dispatch = useDispatch();
 
   const signInWithGoogle = async () => {
@@ -38,8 +41,8 @@ const LoginPage = () => {
         userEmail: additionalUserInfo?.profile?.email || "",
       };
       console.log("authUserData", authUserData);
-      dispatch(AUTH_ACTIONS.setAuthData(authUserData));
-      Router.push('/home')
+      dispatch(updateUser(authUserData));
+      Router.push("/home");
     } catch (error) {
       console.log(error.message);
     }
