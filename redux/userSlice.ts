@@ -33,8 +33,6 @@ export const counterSlice = createSlice({
     //   state.value += action.payload;
     // },
     updateUser: (state, action: PayloadAction<any>) => {
-      console.log("fuck", state);
-      console.log("dick", action);
       state.userData = { ...action.payload };
     },
   },

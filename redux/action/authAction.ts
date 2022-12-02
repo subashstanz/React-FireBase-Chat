@@ -1,7 +1,6 @@
 import { LOGIN_USER, LOGOUT_USER } from "../action-types/authActionType";
 
 const setAuthData = (payload: any) => {
-    console.log('payload',payload)
   return { type: LOGIN_USER, payload };
 };
 

@@ -7,7 +7,6 @@ import { useEffect, useState, useRef, useCallback } from 'react';
   
     useEffect(() => {
       const unsubscribe = auth.onAuthStateChanged(user => {
-        console.log('current user unsubscribed,',user)
         if (user) {
           setUser(user);
         } else {
