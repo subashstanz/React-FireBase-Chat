@@ -24,10 +24,12 @@ const LoginPage = () => {
     try {
       const response = await firebase.auth().signInWithPopup(provider);
       const { additionalUserInfo } = response as any;
+      console.log("additionalUserInfo", additionalUserInfo);
       const authUserData = {
         userName: additionalUserInfo?.profile?.name || "",
         imageURL: additionalUserInfo?.profile?.picture || "",
         userEmail: additionalUserInfo?.profile?.email || "",
+        uid: additionalUserInfo?.profile?.id || "",
       };
       dispatch(updateUser(authUserData));
       Router.push("/home");
@@ -39,7 +41,7 @@ const LoginPage = () => {
   return (
     <main className="dark:bg-gray-800 w-screen h-screen flex items-center justify-center">
       <div className="w-full flex flex-col space-y-4 h-full px-6 py-8 md:px-8 lg:w-1/2">
-        <div className='m-20'>
+        <div className="m-20">
           <h2 className="text-2xl font-semibold text-center text-gray-700 dark:text-white">
             Cric Chat
           </h2>
