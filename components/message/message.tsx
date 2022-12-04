@@ -70,7 +70,7 @@ export default function Message({}: Props) {
     }
   };
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full flex flex-col">
       <div className="flex-1 h-[70%] overflow-auto bg-[#DAD3CC]">
         <div className="py-2 px-3">
           <div className="flex justify-center mb-2">
@@ -121,27 +121,28 @@ export default function Message({}: Props) {
             onChange={(event) => setNewMessage(event.target.value)}
           />
         </div>
-        <div
+        {/* <div
           className="bg-green-900  flex item-center justify-center rounded-full h-16 w-16 cursor-pointer"
           onClick={sendMessage}
-        >
-          <div className="text-gray-100 flex item-center justify-center">
+        > */}
+          <span className="ml-4 w-10 h-10 flex-shrink-0  cursor-pointer rounded-full flex  items-center justify-center bg-green-900 p-2 text-indigo-600 group-active:text-indigo-500">
             <svg
+              className="h-5 w-5 text-gray-100"
               xmlns="http://www.w3.org/2000/svg"
+              fill="none"
               viewBox="0 0 24 24"
-              width="24"
-              height="24"
-              className="text-gray-100"
+              stroke="currentColor"
             >
               <path
-                fill="#263238"
-                fill-opacity=".45"
-                d="M11.999 14.942c2.001 0 3.531-1.53 3.531-3.531V4.35c0-2.001-1.53-3.531-3.531-3.531S8.469 2.35 8.469 4.35v7.061c0 2.001 1.53 3.531 3.53 3.531zm6.238-3.53c0 3.531-2.942 6.002-6.237 6.002s-6.237-2.471-6.237-6.002H3.761c0 4.001 3.178 7.297 7.061 7.885v3.884h2.354v-3.884c3.884-.588 7.061-3.884 7.061-7.885h-2z"
-              ></path>
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
             </svg>
-          </div>
+          </span>
         </div>
       </div>
-    </div>
+    // </div>
   );
 }
