@@ -21,12 +21,17 @@ export type allMessagesT = {
 
 export default function Message({}: Props) {
   const userData = useSelector((state: RootState) => state);
-  console.log("datuserDataa", userData?.auth?.userData);
   const { imageURL, uid, userEmail, userName } = userData?.auth?.userData;
   const [newMessage, setNewMessage] = useState<string>("");
   const [allMessages, setAllMessages] = useState<allMessagesT[]>([]);
 
-  console.log("allMessages", allMessages);
+  const sortMessages = (messages: allMessagesT[]) => {
+    return (
+      messages?.sort((first, second) =>
+        first?.createdAt?.seconds <= second?.createdAt?.seconds ? -1 : 1
+      ) || []
+    );
+  };
 
   useEffect(() => {
     getMessage();
@@ -65,40 +70,6 @@ export default function Message({}: Props) {
     }
   };
   return (
-    // <div className="flex flex-col space-y-1">
-    //   <div>
-    //     {/* {me} */}
-    //     {/* <div>
-    //       <input
-    //         value={newMessage}
-    //         type="text"
-    //         onChange={(event) => setNewMessage(event.target.value)}
-    //       />
-    //       <div
-    //         onClick={sendMessage}
-    //         className="inline-block rounded-full border border-indigo-600 bg-indigo-600 p-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
-    //       >
-    //         <span className="sr-only"> Download </span>
-
-    //         <svg
-    //           className="h-5 w-5"
-    //           xmlns="http://www.w3.org/2000/svg"
-    //           fill="none"
-    //           viewBox="0 0 24 24"
-    //           stroke="currentColor"
-    //         >
-    //           <path
-    //             stroke-linecap="round"
-    //             stroke-linejoin="round"
-    //             stroke-width="2"
-    //             d="M14 5l7 7m0 0l-7 7m7-7H3"
-    //           />
-    //         </svg>
-    //       </div>
-    //     </div> */}
-    //     {/* <UserMessage /> */}
-    //   </div>
-    // </div>
     <div className="w-full h-full">
       <div className="flex-1 h-[70%] overflow-auto bg-[#DAD3CC]">
         <div className="py-2 px-3">
@@ -117,7 +88,7 @@ export default function Message({}: Props) {
             </div>
           </div>
 
-          {allMessages?.map((message, index) => {
+          {sortMessages(allMessages)?.map((message, index) => {
             return (
               <div key={index}>
                 <UserMessage {...message} />
