@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 
  function useAuthState(auth) {
-  console.log('auth',auth.currentUser)
     const [initializing, setInitializing] = useState(true);
     const [user, setUser] = useState(() => auth.currentUser);
   

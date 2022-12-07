@@ -1,15 +1,10 @@
-import Link from "next/link";
-import Layout from "../components/Layout";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 import useAuthState from "../hooks/useAuth";
-import { profile } from "console";
-import { AUTH_ACTIONS } from "../redux/action/authAction";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Router from "next/router";
 import { updateUser } from "../redux/userSlice";
-import { RootState } from "../redux/store";
 import firebaseAuth from "../components/base";
 
 const LoginPage = () => {

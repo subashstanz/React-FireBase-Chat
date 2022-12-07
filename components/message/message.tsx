@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
-import firebaseAuth from "../base";
+import firebaseAuth, { db } from "../base";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 import firebase from "firebase/compat/app";
-import { useSelector } from "react-redux/es/hooks/useSelector";
 import { RootState } from "../../redux/store";
 import UserMessage from "./userMessage";
+import { useSelector } from "react-redux";
 
 type Props = {};
 
 // const db = getFirestore(firebaseAuth);
-const db = firebase.firestore();
 
 export type allMessagesT = {
   createdAt: any;
@@ -124,8 +123,8 @@ export default function Message({}: Props) {
         {/* <div
           className="bg-green-900  flex item-center justify-center rounded-full h-16 w-16 cursor-pointer"
           onClick={sendMessage}
-        > */}
-          <span className="ml-4 w-10 h-10 flex-shrink-0  cursor-pointer rounded-full flex  items-center justify-center bg-green-900 p-2 text-indigo-600 group-active:text-indigo-500">
+        > */} 
+          <span onClick={sendMessage} className="ml-4 w-10 h-10 flex-shrink-0  cursor-pointer rounded-full flex  items-center justify-center bg-green-900 p-2 text-indigo-600 group-active:text-indigo-500">
             <svg
               className="h-5 w-5 text-gray-100"
               xmlns="http://www.w3.org/2000/svg"
@@ -141,8 +140,8 @@ export default function Message({}: Props) {
               />
             </svg>
           </span>
-        </div>
+        {/* </div> */}
       </div>
-    // </div>
+   </div>
   );
 }

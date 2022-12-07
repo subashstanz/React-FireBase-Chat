@@ -8,7 +8,6 @@ type Props = {};
 
 function SideBar({}: Props) {
   const userData = useSelector((state: RootState) => state?.auth?.userData);
-  console.log("sidebae", userData);
 
   const signOut = () => {
     firebaseAuth?.auth()?.signOut();

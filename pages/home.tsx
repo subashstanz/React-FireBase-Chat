@@ -1,15 +1,3 @@
-import { useSelector } from "react-redux";
-import {
-  VictoryArea,
-  VictoryAxis,
-  VictoryChart,
-  VictoryHistogram,
-  VictoryLine,
-  VictoryScatter,
-  VictoryTooltip,
-  VictoryVoronoiContainer,
-  VictoryZoomContainer,
-} from "victory";
 import Message from "../components/message/message";
 import SideBar from "../components/sideBar";
 import { useAuthData } from "../redux/selector/authSelector";
